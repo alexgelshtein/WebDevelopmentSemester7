@@ -1,0 +1,111 @@
+html {
+  height: 100%;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: lighter;
+  font-family: serif;
+  color: bisque;
+  text-align: center;
+}
+
+.searchLine {
+  width: 35%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;   
+}
+
+.searchLine input {
+  border: none;
+}
+
+body {
+  background-image: url(../img/bg.jpg);
+  background-color: bisque;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.searchLine .search {
+  background: #fff;
+  display: flex;
+  padding: 8px 37px 9px 15px;
+  border-radius: 8px;
+  border: 1px solid #dfe1e5;
+  box-shadow: none;
+  border-radius: 24px;
+  z-index: 3;
+  height: 44px;
+  margin: 0 auto;
+  width: 100%;
+  font: 15px Tahoma, Arial, sans-serif;
+  color: #555;
+  outline: none;
+  opacity: .6;
+}
+
+.searchLine .search:hover {
+  box-shadow: 0 1px 6px 0 rgba(255, 228, 196, 0.68);
+  border-color: rgba(223,225,229,0);
+}
+
+.searchLine .search:active {
+  box-shadow: 0 1px 6px 0 rgba(255, 228, 196, 0.68);
+  border-color: rgba(223,225,229,0);
+}
+
+.searchLine .find {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 37px;
+  height: 100%;
+  cursor: pointer;
+  background: url(https://lh4.googleusercontent.com/-b-5aBxcxarY/UAfFW9lVyjI/AAAAAAAABUg/gQtEXuPuIds/s13/go.png)
+    50% no-repeat;
+  opacity: 0.5;
+}
+
+.searchLine .find:hover {
+  opacity: 0.8;
+}
+
+.weatherForecast {
+  margin-top: 40px;
+  height: 60px;
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.weatherElement {
+  height: 20px;
+  width: 20%;
+  text-align: center;
+  font: 15px Tahoma, Arial, sans-serif;
+  color: bisque;
+}
+
+.text {
+  height: 20px;
+  width: 20%;
+  text-align: center;
+  font: 15px Tahoma, Arial, sans-serif;
+  color: rgb(255, 228, 196);
+}
+
+.low {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  font: 15px Tahoma, Arial, sans-serif;
+  color: rgb(8, 5, 0);
+  width: 100%;
+}
