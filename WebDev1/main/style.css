@@ -14,7 +14,7 @@ h1 {
   width: 35%;
   position: relative;
   margin-left: auto;
-  margin-right: auto;   
+  margin-right: auto;
 }
 
 .searchLine input {
@@ -44,17 +44,17 @@ body {
   font: 15px Tahoma, Arial, sans-serif;
   color: #555;
   outline: none;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .searchLine .search:hover {
   box-shadow: 0 1px 6px 0 rgba(255, 228, 196, 0.68);
-  border-color: rgba(223,225,229,0);
+  border-color: rgba(223, 225, 229, 0);
 }
 
 .searchLine .search:active {
   box-shadow: 0 1px 6px 0 rgba(255, 228, 196, 0.68);
-  border-color: rgba(223,225,229,0);
+  border-color: rgba(223, 225, 229, 0);
 }
 
 .searchLine .find {
@@ -67,10 +67,12 @@ body {
   background: url(https://lh4.googleusercontent.com/-b-5aBxcxarY/UAfFW9lVyjI/AAAAAAAABUg/gQtEXuPuIds/s13/go.png)
     50% no-repeat;
   opacity: 0.5;
+  outline: 0;
 }
 
 .searchLine .find:hover {
   opacity: 0.8;
+  outline: 0;
 }
 
 .weatherForecast {
