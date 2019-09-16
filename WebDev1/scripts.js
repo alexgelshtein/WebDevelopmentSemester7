@@ -7,7 +7,7 @@ async function get_weather() {
     let json = await response.json();
     console.log(json);
     document.getElementById("1").innerHTML = json.main.temp + " °C";
-    document.getElementById("2").innerHTML = json.clouds.all + " %";
+    document.getElementById("2").innerHTML = json.weather["0"].description;
     document.getElementById("3").innerHTML = json.main.humidity + " %";
     document.getElementById("4").innerHTML = json.main.pressure + " mm Hg";
     document.getElementById("5").innerHTML = json.wind.speed + " m/s";
