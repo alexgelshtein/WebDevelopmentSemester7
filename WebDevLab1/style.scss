@@ -1,0 +1,49 @@
+$font-stack: 'Open Sans', sans-serif;
+
+.city {
+  font-family: $font-stack;
+  font-size:37px;
+}
+
+.textbox{
+  height:50px;
+  width:40%;
+  border-radius:3px;
+  border:rgba(0,0,0,.3) 2px solid;
+  box-sizing:border-box;
+  font-family: $font-stack;
+  font-size:30px;
+  padding:10px;
+
+}
+
+.textbox:focus{
+  outline:none;
+  border:rgb(196, 215, 24) 2px solid;
+  color:rgb(196, 215, 24);
+}
+
+.button{
+  height:55px;
+  width:50%;
+  border-radius:3px;
+  border:rgba(0,0,0,.3) 0px solid;
+  box-sizing:border-box;
+
+  background:#c84743;
+  color:#FFF;
+  font-family: $font-stack;
+  font-weight:400;
+  font-size: 16pt;
+  transition:background .4s;
+  cursor:pointer;
+}
+
+#content {
+  font-family: $font-stack;
+  width:50%;
+}
+
+.error {
+  width: 100%;
+}
