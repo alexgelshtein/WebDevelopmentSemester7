@@ -1,13 +1,15 @@
+var enteredCity;
+
 window.onload = function () {
     document.getElementById("form1")
         .addEventListener("submit", function (event) {
+            enteredCity = event.target[0].value;
             event.preventDefault();
             getWeather();
         });
 }
 
 function getWeather() {
-    var enteredCity = document.getElementById('userCity').value;
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + enteredCity + '&appid=56f83e11e081b27c7005321a05b8af02', false);
     xhr.send();
@@ -29,6 +31,8 @@ function getWeather() {
             humidity: response.main.humidity,
         }
         var pagefn = doT.template(document.getElementById('pagetmpl').text, undefined);
+        ///Для чего нужно undefined
         document.getElementById('content').innerHTML = pagefn(data);
     }
 }
+///Разбить функцию getWeather на несколько
