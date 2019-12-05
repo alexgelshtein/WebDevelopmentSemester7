@@ -1,0 +1,28 @@
+.saved {
+    &-container{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    &-input{
+      width: 50%;
+      height: 22px;
+      padding: 5px 15px;
+      border: 2px solid #7BA7AB;
+      border-radius: 5px;
+      outline: none;
+      background: #F9F0DA;
+      color: #9E9C9C;
+    }
+  
+    &-button{
+        margin-left: 20px;
+        background-color: #7BA7AB;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
