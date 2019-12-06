@@ -10,18 +10,18 @@ export const GeoCityState = (props) => {
     const componentDidMount = (city, coordinates) => {
         var url = null;
         if (coordinates)
-            url = `http://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&APPID=${appid}&units=metric`;
+            url = `http://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lon}&APPID=${appid}&units=metric`;
         else
-            url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${appid}&units=metric`;
+            url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${appid}&units=metric`;
 
         return fetch(url)
             .then(data => data.json())
             .then(json => {
-                const info = json.list[0];
+                const info = json;
                 console.log(info);
                 var cityValue = {
-                    city: info.city.name,
-                    describtion: info.main.describtion,
+                    city: info.name,
+                    description: info.weather[0].description,
                     temperature: `${info.main.temp} C`,
                     humidity: `${info.main.humidity} %`,
                     pressure: `${info.main.pressure} hPa`,
@@ -78,12 +78,21 @@ export const GeoCityState = (props) => {
                     {isMain ? '' : btn}
                 </div>
                 <ul className="weather-container-list">
-                    <li className="weather-container-item">Describtion: {cityState.describtion}</li>
-                    <li className="weather-container-item">Temperature: {cityState.temperature}</li>
-                    <li className="weather-container-item">Humidity: {cityState.humidity}</li>
-                    <li className="weather-container-item">Pressure: {cityState.pressure}</li>
-                    <li className="weather-container-item">Wind: {cityState.wind}</li>
-
+                    <li className="weather-container-item">
+                        Description: {cityState.description}
+                    </li>
+                    <li className="weather-container-item">
+                        Temperature: {cityState.temperature}
+                    </li>
+                    <li className="weather-container-item">
+                        Humidity: {cityState.humidity}
+                    </li>
+                    <li className="weather-container-item">
+                        Pressure: {cityState.pressure}
+                    </li>
+                    <li className="weather-container-item">
+                        Wind: {cityState.wind}
+                    </li>
                 </ul>
             </div>
         );

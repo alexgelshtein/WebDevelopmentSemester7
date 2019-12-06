@@ -11,11 +11,23 @@
   
     &-search-button {
         margin-left: 20px;
-        background-color: #7BA7AB;
+        background-color: #A3D0C3;
         padding: 5px 15px;
         border-radius: 5px;
-        border: none;
+        border: solid 1px transparent;
         font-size: 16px;
         font-weight: bold;
+        cursor: pointer;
+    }
+
+    &-serach-button:active{
+      transform: translateY(1px);
+      filter: saturate(200%);
+    }
+
+    &-search-button:hover{
+      color: #A3D0C3;
+      border-color: #A3D0C3;
+      background-color: white;
     }
 }
