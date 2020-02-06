@@ -1,0 +1,25 @@
+$font: fantasy, serif
+$font_size: 15pt
+$error_font: railway, serif
+$error_color: red
+$light_green: #4CAF50
+
+.submit-button
+  height: 30px
+  width: 25%
+  border-radius: 3px
+  background-color: $light_green
+  color: white
+  font-family: $font
+  font-size: $font_size
+  transition: 0.4s
+  cursor: pointer
+
+  &:hover
+    background-color: white
+    color: black
+    border: 2px solid #4CAF50
+
+.error
+  font-family: $error_font
+  color: $error_color

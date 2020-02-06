@@ -1,26 +1,43 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css?v=2" type="text/css"/>
-        <script src="./doT.min.js" type="text/javascript"></script>
-        <script src="./script.js" type="text/javascript"></script>
-        <script id="pagetmpl" type="text/x-dot-template">
-            <h2>Weather in {{=it.city}}</h2>
-            <p>Temperature: {{=it.temp}} ˚C</p>
-            <p>Wind Speed: {{=it.windSpeed}} m/s</p>
-            <p>Cloudiness: {{=it.sky}} </p>
-            <p>Pressure: {{=it.pressure}} mmHg </p>
-            <p>Humidity: {{=it.humidity}} % </p>
-        </script>
-        <script id="errortmpl" type="text/x-dot-template">
-            <h2>Error: {{=it.code}} {{=it.text}}</h2>
-        </script>
-    </head>
-    <body>
-        <form class="inputForm" id="form1">
-            <p class="city">City <input type="text" id="userCity" class="textbox"/></p>
-            <input class="button" type="submit" value="Check the weather here!"/>
-        </form>
-        <div id="content"></div>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <script type="text/javascript" src="dot.min.js"></script>
+    <script id="weatherTemplate" type="text/x-dot-template">
+        <h1>Weather in city {{=it.city}}</h1>
+        <p>Temperature: {{=it.temp}} ˚C</p>
+        <p>Min temperature: {{=it.minTemp}} ˚C</p>
+        <p>Max temperature: {{=it.maxTemp}} ˚C</p>
+        <p>Wind Speed: {{=it.windSpeed}} m/s</p>
+        <p>Sky status: {{=it.sky}} </p>
+        <p>Pressure: {{=it.pressure}} hPa </p>
+        <p>Humidity: {{=it.humidity}}% </p>
+    </script>
+    <script id="cityNotFoundTemplate" type="text/x-dot-template">
+        <div class="error">
+            <h1>City {{=it.city}} is not found</h1>
+        </div>
+    </script>
+    <script id="errorTemplate" type="text/x-dot-template">
+        <div class="error">
+            <h1>An error has occured</h1>
+            <p>Code: {{=it.errorCode}}</p>
+            <p>Text: {{=it.errorText}}</p>
+        </div>
+    </script>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="./node_modules/mocha/mocha.js"></script>
+    <script src="./node_modules/chai/chai.js"></script>
+    <script src="./node_modules/sinon/pkg/sinon.js"></script>
+</head>
+<body>
+<form onsubmit="handleSubmit(event);">
+    <h1>Enter city</h1>
+    <input id="city" type="text">
+    <input class="submit-button" type="submit">
+</form>
+<div id="weather"></div>
+</body>
+<script type="text/javascript" src="mock/weather.js"></script>
+<script type="text/javascript" src="test/test.js"></script>
 </html>

@@ -1,43 +1,51 @@
-window.onload = function () {
-    document.getElementById("form1")
-        .addEventListener("submit", function (event) {
-            let enteredCity = event.target[0].value;
-            event.preventDefault();
-            let requestForecast = getWeather(enteredCity);
-            handleErrors(requestForecast);
-        });
+const weatherTemplate = doT.template(document.getElementById('weatherTemplate').text);
+const cityNotFoundTemplate = doT.template(document.getElementById('cityNotFoundTemplate').text);
+const errorTemplate = doT.template(document.getElementById('errorTemplate').text);
+
+function handleSubmit(event) {
+    event.preventDefault();
+    let cityName = event.target.city.value;
+    if (cityName === "") {
+        return
+    }
+    render(getWeather(cityName), cityName)
 }
 
 function getWeather(cityName) {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=56f83e11e081b27c7005321a05b8af02', false);
-    xhr.send();
-    return xhr;
-}
-
-function handleErrors(xhr) {
-    if (xhr.status === 404 || xhr.status === 500) {
-        let pagefnerror = doT.template(document.getElementById('errortmpl').text);
-        let error = {
-            text: xhr.statusText,
-            code: xhr.status
-        }
-        document.getElementById('content').innerHTML = pagefnerror(error);
+    let request = new XMLHttpRequest();
+    request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?units=metric&appid=56f83e11e081b27c7005321a05b8af02&q=' + cityName, false);
+    request.send();
+    if (request.status === 200) {
+        let response = JSON.parse(request.responseText);
+        return {
+            city: response.name,
+            temp: response.main.temp,
+            minTemp: response.main.temp_min,
+            maxTemp: response.main.temp_max,
+            windSpeed: response.wind.speed,
+            sky: response.weather[0].description,
+            pressure: response.main.pressure,
+            humidity: response.main.humidity,
+            error : null
+        };
     } else {
-        parse(xhr);
+        if (request.status === 404) {
+            return { error : 'NotFound' }
+        } else {
+            return { error : request.statusText, errorCode : request.status}
+        }
     }
 }
 
-function parse(xhr) {
-    let response = JSON.parse(xhr.responseText);
-        let data = {
-            city: response.name,
-            temp: (response.main.temp - 273.15).toFixed(2),
-            windSpeed: response.wind.speed,
-            sky: response.weather[0].description,
-            pressure: (response.main.pressure * 0.75).toFixed(1),
-            humidity: response.main.humidity,
+function render(weather, cityName) {
+    let content = document.getElementById('weather');
+    if (weather.error === null) {
+        content.innerHTML = weatherTemplate(weather);
+    } else {
+        if (weather.error === 'NotFound') {
+            content.innerHTML = cityNotFoundTemplate({city: cityName});
+        } else {
+            content.innerHTML = errorTemplate({errorText: weather.error, errorCode: weather.errorCode});
         }
-        let pagefn = doT.template(document.getElementById('pagetmpl').text);
-        document.getElementById('content').innerHTML = pagefn(data);
+    }
 }

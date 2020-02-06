@@ -1,15 +1,16 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Main } from './Components/Main/Main'
+import {Provider} from 'react-redux'
+import {Page} from "./components/Page";
+import store from './store/store'
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <Main />
-      </div>
-    );
-  }
+function App() {
+  return (
+      <Provider store={store}>
+        <Page/>
+      </Provider>
+  );
 }
 
 export default App;
